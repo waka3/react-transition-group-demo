@@ -1,0 +1,31 @@
+/* .container {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+} */
+
+.page-enter {
+    opacity: 0;
+    transform: translateY(20%);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateZ(0);
+    transition: opacity 3000ms, transform 3000ms;
+}
+
+.page-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.page-exit-active {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: opacity 3000ms, transform 3000ms;
+}
