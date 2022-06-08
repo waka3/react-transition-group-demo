@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter as Router, Route, NavLink, Link, Routes } from 'react-router-dom'
+import { useMatch } from 'react-router'
 import { CSSTransition } from 'react-transition-group'
 import Home from './pages/home'
 import About from './pages/about'
@@ -16,6 +17,15 @@ const routes = [
 ]
 
 function Example() {
+    const RenderTransition = (path, match, Component) => { 
+        return <CSSTransition
+            in={path === match.path}
+            timeout={3000}
+            classNames="page"
+        >
+            <Component />
+        </CSSTransition>
+    }
     return (
         <Router>
             <>
@@ -31,14 +41,7 @@ function Example() {
                 </nav>
                 <Routes className="container">
                     {routes.map(({ path, Component }) => (
-                        <Route key={path} path={path} element={<CSSTransition
-                            in={path != null}
-                            timeout={3000}
-                            classNames="page"
-                        >
-                            <Component />
-                        </CSSTransition>}>
-                        </Route>
+                        <Route key={path} path={path} element={<RenderTransition Component={Component} path={path} match={ {}}/>} />
                     ))}
                 </Routes>
             </>
